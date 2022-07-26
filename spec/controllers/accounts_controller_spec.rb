@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe AccountsController, type: :controller do
+describe AccountsController do
   let!(:user) { create(:user, :with_account) }
 
   describe 'GET /accounts' do

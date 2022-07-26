@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ApplicationHelper do
+describe ApplicationHelper do
   describe '#active_class' do
     describe '#flash_class' do
       it 'returns correct classes' do

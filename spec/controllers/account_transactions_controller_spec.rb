@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe AccountTransactionsController, type: :controller do
+describe AccountTransactionsController do
   let!(:user) { create(:user, :with_account) }
   let!(:user_2) { create(:user, :with_account) }
   let(:transaction) do

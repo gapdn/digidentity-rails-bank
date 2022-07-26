@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Account do
+describe Account do
   describe 'columns' do
     it { is_expected.to have_db_column(:number) }
     it { is_expected.to have_db_column(:credit_cents) }
