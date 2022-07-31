@@ -37,3 +37,29 @@ The Ruby Bank
 ## Tests run
 
 - Run unit tests `bundle exec rspec`
+
+## After deploy/run part~~y~~
+
+- After successful run of the project you can sign in with exisitng user data
+
+email: `john_doe@gmail.com`
+password: `12345678`
+<img width="1436" alt="Screenshot 2022-07-31 at 19 22 02" src="https://user-images.githubusercontent.com/57171830/182038100-477d7b30-9efd-48a5-a761-437ccd7e052d.png">
+or create a new user via sign up form
+<img width="1436" alt="Screenshot 2022-07-31 at 19 25 57" src="https://user-images.githubusercontent.com/57171830/182038123-202fb313-5c7a-49f0-be8c-69fabbb98a60.png">
+
+- After successful sign in you can create an account
+
+<img width="1440" alt="Screenshot 2022-07-31 at 19 23 19" src="https://user-images.githubusercontent.com/57171830/182038153-b86c9fc5-c45d-404d-97aa-f0ea121ae3dc.png">
+
+- And send money to any existing accounts except yours
+<img width="1436" alt="Screenshot 2022-07-31 at 20 25 44" src="https://user-images.githubusercontent.com/57171830/182038209-be026c79-66c9-4a2f-bbd6-5f38ac219cc2.png">
+
+- Show all account transactions
+<img width="1436" alt="Screenshot 2022-07-31 at 20 27 39" src="https://user-images.githubusercontent.com/57171830/182038269-64d07cd6-f1b6-4472-9067-5bdbdb8dc513.png">
+
+- Show particular account transaction
+<img width="1431" alt="Screenshot 2022-07-31 at 20 28 39" src="https://user-images.githubusercontent.com/57171830/182038297-5841e188-0d30-48cc-a8af-5e15e2d8c58e.png">
+
+- You can face with validation errors in case if try to send more money than you have in your current account or if you try to send a negative amount of money
+<img width="1422" alt="Screenshot 2022-07-31 at 20 05 44" src="https://user-images.githubusercontent.com/57171830/182038477-0407dff1-4f35-473b-b6a8-e0fdb788e38c.png">
