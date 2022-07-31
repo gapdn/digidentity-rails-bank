@@ -7,16 +7,29 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-user = User.new(
-  first_name: 'Johana',
+user_1 = User.new(
+  first_name: 'John',
   last_name: 'Doe',
-  email: 'test2_email@gmail.com',
+  email: 'john_doe@gmail.com',
   password: '12345678'
 )
 
-user.accounts.build(
+user_2 = User.new(
+  first_name: 'Johana',
+  last_name: 'Doe',
+  email: 'johana_doe@gmail.com',
+  password: '12345678'
+)
+
+user_1.accounts.build(
   number: FFaker::Number.number(digits: 16),
   credit: 1000
 )
 
-user.save
+user_2.accounts.build(
+  number: FFaker::Number.number(digits: 16),
+  credit: 1000
+)
+
+user_1.save
+user_2.save

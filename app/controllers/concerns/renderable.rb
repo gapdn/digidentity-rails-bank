@@ -17,7 +17,7 @@ module Renderable
     def render_success(object, redirect_url)
       respond_to do |format|
         format.html do
-          redirect_to redirect_url, notice: I18n.t('response.success.created', entity: object.class.name.capitalize)
+          redirect_to(redirect_url, notice: I18n.t('response.success.created', entity: object.class.name.capitalize))
         end
         format.json { render :show, status: :created, location: object }
       end
@@ -26,8 +26,8 @@ module Renderable
     def render_error(object, return_action)
       respond_to do |format|
         format.html do
-          flash.alert = I18n.t('response.fail.invalid', errors: object.errors.messages.map(&:text))
-          render(action: return_action, status: :unprocessable_entity)
+          flash.alert = I18n.t('response.fail.invalid', errors: object.errors.messages.map(&:text).join(', '))
+          redirect_to(action: return_action, status: :unprocessable_entity)
         end
         format.json { render json: object.errors.messages.map(&:text), status: :unprocessable_entity }
       end
