@@ -2,10 +2,10 @@
 
 class AccountTransactionsController < ApplicationController
   before_action :authorize_account, only: %i[index show]
+  before_action :account_id, only: %i[index show new]
 
   def index
     @presenter = AccountTransactions::IndexPresenter.new(params[:account_id])
-    @account_id = params[:account_id]
   end
 
   def show
@@ -15,18 +15,17 @@ class AccountTransactionsController < ApplicationController
   def new
     @account_transaction = AccountTransaction.new
     @presenter = AccountTransactions::CreatePresenter.new(current_user:)
-    @account_id = params[:account_id]
   end
 
   def create
     result = AccountTransactions::Creator.call(account_transaction_params)
-    app_render(result, redirect_url: account_account_transactions_url(result), return_action: :new)
+    app_render(result, redirect_url: account_account_transaction_url(result, account_id:), return_action: :new)
   end
 
   private
 
   def authorize_account
-    return if AccountTransactionsPolicy.can_show_for?(current_user, params[:account_id])
+    return if AccountTransactionsPolicy.can_show_for?(current_user, account_id)
 
     flash.alert = I18n.t('response.fail.unauthorized', status: :unauthorized)
 
@@ -41,5 +40,9 @@ class AccountTransactionsController < ApplicationController
       :receiver_account_balance,
       :amount
     )
+  end
+
+  def account_id
+    @account_id ||= params[:account_id]
   end
 end
