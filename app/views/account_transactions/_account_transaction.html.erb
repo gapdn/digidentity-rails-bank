@@ -1,11 +1,19 @@
-<div id="<%= dom_id account_transaction %>">
-  <div>
-    <%= "Sender: #{account_transaction.sender_account.email}" %>
-  </div>
-  <div>
-    <%= "Amount: #{account_transaction.amount}" %>
-  </div>
-  <div>
-    <%= "Balance after transaction: #{account_transaction.receiver_account_balance}" %>
-  </div>
-</div>
+<table class="table table-light" id="account_transactions">
+  <thead>
+    <tr>
+      <th scope="col"><%= t('account_transactions.table.transaction_id') %></th>
+      <th scope="col"><%= t('account_transactions.table.sender_account_id') %></th>
+      <th scope="col"><%= t('account_transactions.table.receiver_account_id') %></th>
+      <th scope="col"><%= t('account_transactions.table.amount') %></th>
+      <th scope="col"><%= t('account_transactions.table.created_at') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td><%= account_transaction.id %></td>
+        <td><%= account_transaction.sender_account.number %></td>
+        <td><%= account_transaction.receiver_account.number %></td>
+        <td><%= account_transaction.amount %></td>
+        <td><%= account_transaction.created_at %></td>
+    </tr>
+</table>

@@ -1,9 +1,9 @@
-<h1>New account transaction</h1>
+<h1><%= t('.h1') %></h1>
 
 <%= render "form", account_transaction: @account_transaction, presenter: @presenter, account_id: @accoun_id %>
 
 <br>
 
 <div>
-  <%= link_to "Back to account transactions", account_transactions_path %>
+  <%= link_to t('.show_transactions'), account_account_transactions_path %>
 </div>

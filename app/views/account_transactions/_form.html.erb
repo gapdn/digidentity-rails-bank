@@ -1,16 +1,16 @@
-<%= form_with(model: account_transaction) do |f| %>
+<%= form_for(:account_transaction, url: account_account_transactions_path) do |f| %>
   <div>
     <%= f.label :receiver_account %>
     <%= f.select :receiver_account_id, presenter.accounts %>
   </div>
+  <br>
   <div>
     <%= f.label :amount %>
     <%= f.number_field :amount%>
     <%= f.hidden_field :sender_account_id, value: @account_id %>
   </div>
-
-
+  <br>
   <div>
-    <%= f.submit %>
+    <%= f.submit t('.submit_button'), class: 'btn btn-success' %>
   </div>
 <% end %>

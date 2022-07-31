@@ -18,11 +18,13 @@ module AccountTransactions
 
     def safe_create(params)
       ActiveRecord::Base.transaction do
-        @trasnsaction = AccountTransaction.new(transaction_params)
-        @trasnsaction.save!
+        @trasnsaction = AccountTransaction.new(transaction_params).lock!
+        @trasnsaction.save
 
-        @trasnsaction.sender_account.update!(credit: params[:sender_account_balance])
-        @trasnsaction.receiver_account.update!(credit: params[:receiver_account_balance])
+        @trasnsaction.sender_account.update(credit: params[:sender_account_balance])
+        @trasnsaction.sender_account.lock!
+        @trasnsaction.receiver_account.update(credit: params[:receiver_account_balance])
+        @trasnsaction.receiver_account.lock!
       end
 
       @trasnsaction

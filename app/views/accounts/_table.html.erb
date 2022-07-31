@@ -1,0 +1,19 @@
+<table class="table table-light" id="accounts">
+  <thead>
+    <tr>
+      <th scope="col"><%= t('accounts.table.number_sign') %></th>
+      <th scope="col"><%= t('accounts.table.number') %></th>
+      <th scope="col"><%= t('accounts.table.credit') %></th>
+      <th scope="col"><%= t('accounts.table.currency') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each_with_index do |account, index| %>
+      <tr>
+        <th scope="row"><%= index.succ %></th>
+        <td><%= link_to "#{account.number}", account_account_transactions_path(account) %></td>
+        <td><%= account.credit %></td>
+        <td><%= account.credit_currency %></td>
+      </tr>
+    <% end %>
+</table>
