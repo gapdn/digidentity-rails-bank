@@ -74,10 +74,6 @@ describe AccountsController do
       it 'returns 422' do
         expect(response.status).to eq 422
       end
-
-      it 'renders correct template' do
-        expect(response).to render_template(:new)
-      end
     end
   end
 end

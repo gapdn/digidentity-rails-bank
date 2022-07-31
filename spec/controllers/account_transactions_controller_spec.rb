@@ -12,11 +12,11 @@ describe AccountTransactionsController do
     )
   end
 
-  describe 'GET /account_transactions' do
+  describe 'GET /accounts/:account_id/account_transactions' do
     before do
       transaction
       sign_in(user)
-      get :index
+      get(:index, params: { account_id: user.accounts.first.id })
     end
 
     it 'success' do
@@ -28,10 +28,10 @@ describe AccountTransactionsController do
     end
   end
 
-  describe 'GET show /account_transactions/:id' do
+  describe 'GET show /accounts/:account_id/account_transactions/:id' do
     before do
       sign_in(user)
-      get(:show, params: { id: transaction.id })
+      get(:show, params: { account_id: user.accounts.first.id, id: transaction.id })
     end
 
     it 'success' do
@@ -43,10 +43,13 @@ describe AccountTransactionsController do
     end
   end
 
-  describe 'POST /accounts' do
+  describe 'POST /accounts/:account_id/account_transactions' do
     before do
       sign_in(user)
-      post(:create, params:)
+      post(
+        :create,
+        params: params.merge!(account_id: params.dig(:account_transaction, 'sender_account_id'))
+      )
     end
 
     describe 'success' do
@@ -58,7 +61,7 @@ describe AccountTransactionsController do
       end
 
       it 'redirect to account_transactions view' do
-        expect(response).to redirect_to(account_transaction_url(transaction_id))
+        expect(response).to redirect_to(account_account_transactions_url(transaction_id))
       end
     end
 
@@ -71,10 +74,6 @@ describe AccountTransactionsController do
 
       it 'returns 422' do
         expect(response.status).to eq 422
-      end
-
-      it 'renders correct template' do
-        expect(response).to render_template(:new)
       end
     end
   end

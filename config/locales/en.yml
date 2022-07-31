@@ -19,9 +19,10 @@ en:
       created: "%{entity} was successfully created."
     fail:
       invalid: "There are validation errors: %{errors}"
+      unauthorized: You are not authorized to perform this action
   accounts:
     index:
-      h1: Account
+      h1: Accounts
       show_account: Show Account details
       create_account: Create New Account
     edit:
@@ -34,3 +35,30 @@ en:
       edit_account: Edit this Account
       show_accounts: Back to Accounts
       show_transaction: History
+    table:
+      number_sign: '#'
+      number: Account Number
+      credit: Account Credit
+      currency: Account Currency
+  account_transactions:
+    index:
+      h1: Account Transactions
+      create_transaction: Send Money
+    new:
+      h1: Send money
+      show_transactions: Back to account transactions
+    show:
+      sender: Sender Account Number
+      receiver: Receiver Account Number
+      amount: Amount
+      balance: Balance After Transaction
+      show_transactions: Back to account transactions
+    table:
+      number_sign: '#'
+      transaction_id: Transaction ID
+      amount: Amount
+      sender_account_id: Sender Account ID
+      receiver_account_id: Receiver Account ID
+      created_at: Created At
+    form:
+      submit_button: Send

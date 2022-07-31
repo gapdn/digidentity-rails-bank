@@ -68,5 +68,8 @@ Style/OpenStructUse:
 Naming/VariableNumber:
   EnforcedStyle: snake_case
 
+Naming/BlockForwarding:
+  EnforcedStyle: explicit
+
 Lint/MissingSuper:
   Enabled: false

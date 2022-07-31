@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class AccountTransactionsController < ApplicationController
+  before_action :authorize_account, only: %i[index show]
+
   def index
-    @outgoing_transactions = current_user.outgoing_transactions
-    @incoming_transactions = current_user.incoming_transactions
+    @presenter = AccountTransactions::IndexPresenter.new(params[:account_id])
     @account_id = params[:account_id]
   end
 
@@ -19,10 +20,18 @@ class AccountTransactionsController < ApplicationController
 
   def create
     result = AccountTransactions::Creator.call(account_transaction_params)
-    app_render(result, redirect_url: account_transaction_url(result), return_action: :new)
+    app_render(result, redirect_url: account_account_transactions_url(result), return_action: :new)
   end
 
   private
+
+  def authorize_account
+    return if AccountTransactionsPolicy.can_show_for?(current_user, params[:account_id])
+
+    flash.alert = I18n.t('response.fail.unauthorized', status: :unauthorized)
+
+    redirect_back(fallback_location: root_path)
+  end
 
   def account_transaction_params
     params.require(:account_transaction).permit(
