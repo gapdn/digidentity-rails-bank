@@ -2,7 +2,7 @@
 
 module Accounts
   class CreateMapper < ApplicationMapper
-    DEFAULT_CREDIT_AMOUNT = 100
+    DEFAULT_CREDIT_AMOUNT = 1000
     NUMBER_RANGE = (1..16)
 
     def call(input)
