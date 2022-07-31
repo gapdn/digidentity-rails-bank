@@ -61,7 +61,8 @@ describe AccountTransactionsController do
       end
 
       it 'redirect to account_transactions view' do
-        expect(response).to redirect_to(account_account_transactions_url(transaction_id))
+        expect(response)
+          .to redirect_to(account_account_transaction_url(transaction_id, account_id: transaction.sender_account_id))
       end
     end
 
