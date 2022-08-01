@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= t('.h1') %></h1>
+
+<%= render "table", presenter: @presenter, account_id: @account_id %>
+
+<div>
+  <%= link_to t('.create_transaction'), new_account_account_transaction_path(account_id: @account_id) %>
+</div>

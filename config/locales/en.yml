@@ -1,0 +1,64 @@
+en:
+  dry_validation:
+    errors:
+      account:
+        rules:
+          credit_currency:
+            invalid: Invalid currency
+          email: Email is not a valid email address
+      account_transaction:
+        rules:
+          sender_account:
+            invalid: You cannot send more than you have. That is life...
+          receiver_account:
+            invalid: You cannot send to yourself
+          amount:
+            invalid: Amount must be grater than 0
+  response:
+    success:
+      created: "%{entity} was successfully created."
+    fail:
+      invalid: "There are validation errors: %{errors}"
+      unauthorized: You are not authorized to perform this action
+  accounts:
+    index:
+      h1: Accounts
+      show_account: Show Account details
+      create_account: Create New Account
+    edit:
+      h1: Edit Account
+      show_accounts: Back to Accounts
+    new:
+      h1: New Account
+      show_accounts: Back to Accounts
+    show:
+      edit_account: Edit this Account
+      show_accounts: Back to Accounts
+      show_transaction: History
+    table:
+      number_sign: '#'
+      number: Account Number
+      credit: Account Credit
+      currency: Account Currency
+  account_transactions:
+    index:
+      h1: Account Transactions
+      create_transaction: Send Money
+    new:
+      h1: Send money
+      show_transactions: Back to account transactions
+    show:
+      sender: Sender Account Number
+      receiver: Receiver Account Number
+      amount: Amount
+      balance: Balance After Transaction
+      show_transactions: Back to account transactions
+    table:
+      number_sign: '#'
+      transaction_id: Transaction ID
+      amount: Amount
+      sender_account_id: Sender Account ID
+      receiver_account_id: Receiver Account ID
+      created_at: Created At
+    form:
+      submit_button: Send

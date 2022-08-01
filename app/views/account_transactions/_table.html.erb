@@ -1,0 +1,19 @@
+<table class="table table-light" id="accounts">
+  <thead>
+    <tr>
+      <th scope="col"><%= t('account_transactions.table.number_sign') %></th>
+      <th scope="col"><%= t('account_transactions.table.transaction_id') %></th>
+      <th scope="col"><%= t('account_transactions.table.amount') %></th>
+      <th scope="col"><%= t('account_transactions.table.balance') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% presenter.transactions.each_with_index do |account_transaction, index| %>
+      <tr>
+        <th scope="row"><%= index.succ %></th>
+          <td><%= link_to(account_transaction[:id], account_account_transaction_path(account_id: @account_id, id: account_transaction[:id])) %></td>
+          <td><%= account_transaction[:amount] %></td>
+          <td><%= account_transaction[:balance] %></td>
+      </tr>
+    <% end %>
+</table>
